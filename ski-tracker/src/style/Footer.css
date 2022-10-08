@@ -2,7 +2,3 @@
 @tailwind components;
 @tailwind utilities;
 
-.skiresort{
-    max-width: 90%;
-    margin-bottom: 15px;
-}

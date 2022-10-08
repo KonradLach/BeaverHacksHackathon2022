@@ -10,7 +10,7 @@ function Home() {
     const [long, setLong] = useState([]);
     const [skiDataLoading,setSkiDataLoading] = useState(true)
     //fetches ski resort data from skimap.org
-    let id = [160,165,162,163]
+    let id = [160,165,162,175]
 
     function getResortFromApiAsync(id) {
       const promises = []
@@ -37,6 +37,7 @@ function Home() {
       lang: 'en',
       unit: 'imperial', // values are (metric, standard, imperial)
     });
+    
 
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(function(position) {
@@ -53,6 +54,15 @@ function Home() {
       useEffect(() => {
           getResortFromApiAsync(id)
       },[])
+  
+      const renderResortCards = () => {
+        const cards = skiData.map((resort) =>
+        <Skiresortcard resort = {resort} key={resort.name}/>)
+        return(
+          <div className='skiresortcontainer grid grid-cols-4'>
+            {cards}
+          </div>)
+      }
 
   if(skiDataLoading){
     return <div className='App'>Loading..</div>
@@ -60,10 +70,8 @@ function Home() {
 
   return (
     <div className="Home">
-        <h1>Ski-Tracker</h1>
-        <div><h2>{skiData[0].name}</h2>
-        <h3>Latitude: {skiData.latitude} Longitude: {skiData.longitude}  </h3></div>
-        <h3>My current postion. Latitude: {lat} Longitude: {long} </h3>
+        <h1 className='text-center mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white'>Ski-Tracker</h1>
+        <h3 className='text-center mb-6 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400'>My current postion. Latitude: {lat} Longitude: {long} </h3>
         <ReactWeather
           isLoading={isLoading}
           errorMessage={errorMessage}
@@ -73,7 +81,7 @@ function Home() {
           unitsLabels={{ temperature: 'F', windSpeed: 'mph' }}
           showForecast
         />
-        <Skiresortcard resort= {skiData[0]} ></Skiresortcard>
+          {renderResortCards()}
     </div>
   );
 }
