@@ -3,7 +3,7 @@ import '../App.css';
 import Skiresortcard from './Skiresortcard';
 import ReactWeather, { useOpenWeather } from 'react-open-weather';
 
-function Home() {
+function Home({apiData}) {
 
     const [skiData,setSkiData] = useState([])
     const [lat, setLat] = useState([]);
@@ -82,6 +82,7 @@ function Home() {
           showForecast
         />
           {renderResortCards()}
+          {apiData.main.temp}
     </div>
   );
 }
