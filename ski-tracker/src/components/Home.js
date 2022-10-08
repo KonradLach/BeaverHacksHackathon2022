@@ -29,15 +29,6 @@ function Home({apiData}) {
         });
      }
 
-    const { data, isLoading, errorMessage } = useOpenWeather({
-      // key: '66d7fecb1ff378f6d549b766038d5ff3',
-      key: 'off while testing',
-      lat: "44.43355",
-      lon: "-89.39851",
-      lang: 'en',
-      unit: 'imperial', // values are (metric, standard, imperial)
-    });
-    
 
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(function(position) {
@@ -72,17 +63,8 @@ function Home({apiData}) {
     <div className="Home">
         <h1 className='text-center mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white'>Ski-Tracker</h1>
         <h3 className='text-center mb-6 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400'>My current postion. Latitude: {lat} Longitude: {long} </h3>
-        <ReactWeather
-          isLoading={isLoading}
-          errorMessage={errorMessage}
-          data={data}
-          lang="en"
-          locationLabel={skiData.name}
-          unitsLabels={{ temperature: 'F', windSpeed: 'mph' }}
-          showForecast
-        />
           {renderResortCards()}
-          {apiData.main.temp}
+          {/* {apiData.main.temp} */}
     </div>
   );
 }
