@@ -7,7 +7,7 @@ from flask import Flask
 from flask import request 
 
 BASE_URL = "http://api.openweathermap.org/data/2.5/weather?"
-API_KEY = "1b824085243b6de3648599ac63892832"
+API_KEY = "66d7fecb1ff378f6d549b766038d5ff3"
 #put API key into text file read from
 
 #CORS(app)
@@ -21,4 +21,3 @@ def get_weather_data():
     url = f"https://api.openweathermap.org/data/2.5/weather?lat={float(lat)}&lon={float(lon)}&appid={API_KEY}" 
     data = requests.get(url).json()
     return data
-
