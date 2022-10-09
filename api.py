@@ -121,7 +121,8 @@ def closest_four():
     list_4 = nearby_resorts(float(lat), float(lon), 100)
     return json.dumps(list_4)
 
-@app.route("/count", methods=["GET","POST"], strict_slashes=False)
+
+@app.route("/count", methods=["GET"], strict_slashes=False)
 def get_count():
     import torch
     import numpy as np
@@ -147,6 +148,3 @@ def get_count():
         count = 0
 
     return json.dumps(count_list)
-
-if __name__  == "__main__": 
-    app.run(debug=True)
