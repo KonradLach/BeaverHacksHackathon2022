@@ -1,0 +1,1 @@
+Move 'ski1.jpg' 'ski2.jpg' 'ski3.jpg' 'ski4.jpg' into root.
