@@ -39,7 +39,7 @@ function App() {
       }, []);
 
     useEffect(()=> {
-  //gets closest resorts after location is done loading
+//gets closest resorts after location is done loading
             getClosestResorts(lat,long)
 
     },[islocationLoading])
@@ -62,7 +62,7 @@ function App() {
         method: 'POST',
         headers: {'Content-Type': "application/json"},
         body: JSON.stringify({ resort1:[data1.latitude,data1.longitude], resort2: [data2.latitude,data2.longitude],resort3: [data3.latitude,data3.longitude],resort4: [data4.latitude,data4.longitude] })
-      
+//        body: JSON.stringify({resort1:[11,44],resort2:[12,45],resort3:[13,43],resort4:[11,43]})
     };
     fetch("http://127.0.0.1:5000/data", requestOptions)
         .then(response => response.json())
