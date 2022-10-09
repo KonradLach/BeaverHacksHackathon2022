@@ -25,7 +25,7 @@ function Footer() {
                     <a href="https://github.com/Isaac-Best" className="hover:underline" target="_blank">GitHub</a>
                 </li>
                 <li className="mb-4">
-                    <a href="#" className="hover:underline" target="_blank">LinkedIn</a>
+                    <a href="https://www.linkedin.com/in/isaac-best-26b4ba238/" className="hover:underline" target="_blank">LinkedIn</a>
                 </li>
 
             </ul>
@@ -37,7 +37,7 @@ function Footer() {
                     <a href="https://github.com/DerrickMac" className="hover:underline" target="_blank">GitHub</a>
                 </li>
                 <li className="mb-4">
-                    <a href="#" className="hover:underline" target="_blank">LinkedIn</a>
+                    <a href="https://www.linkedin.com/in/derrick-m-ab795224/" className="hover:underline" target="_blank">LinkedIn</a>
                 </li>
             </ul>
         </div>
@@ -48,7 +48,7 @@ function Footer() {
                     <a href="https://github.com/lucktran" className="hover:underline" target="_blank">GitHub</a>
                 </li>
                 <li className="mb-4">
-                    <a href="#" className="hover:underline" target="_blank">LinkedIn</a>
+                    <a href="https://www.linkedin.com/in/lucktran/" className="hover:underline" target="_blank">LinkedIn</a>
                 </li>
             </ul>
         </div>

@@ -1,16 +1,32 @@
 import "../style/Skiresortcard.css"
 import React from "react";
-function Skiresortcard({resort,temp,description,snow}) {
+function Skiresortcard({resort,temp,description,snow,busy,src}) {
   console.log(resort.name)
     const MY_ACCESS_KEY = "7ZRNVRYDAj2LhFsIzZYj4jaGhns6RB8-b2UEdgAfUBM"
-    let website = "#"
-    console.log(resort.website)
+
+    const howBusy = () =>{
+        if(busy <= 10){
+            return  <p className="text-medium font-small font-bold uppercase tracking-widest text-green-900">
+                    It is not that busy
+                    </p>
+        }
+        else if(busy<=20){
+            return  <p className="text-medium font-small font-bold uppercase tracking-widest text-yellow-900">
+                It is kind of busy
+                </p>
+        }
+        else{
+            return  <p className="text-medium font-small font-bold uppercase tracking-widest text-red-900">
+                It is busy
+                </p>
+        }
+    }
   return (
       <div className="skiresort">
         <a href={resort.website} className="group relative block bg-black">
             <img
                 alt={resort.name}
-                src={"https://images.unsplash.com/photo-1600332303625-c7d287a9f4b0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80"}
+                src={src}
                 className="absolute inset-0 h-full w-full object-cover opacity-90 transition-opacity group-hover:opacity-50"
             />
 
@@ -21,6 +37,7 @@ function Skiresortcard({resort,temp,description,snow}) {
                 <p className="text-sm font-small uppercase tracking-widest text-blue-800">
                 {snow} inch snow in last 3 hours
                 </p>
+                {howBusy()}
                 <p className="text-2xl font-bold text-white">{resort.name}</p>
 
                 <div className="mt-64">
