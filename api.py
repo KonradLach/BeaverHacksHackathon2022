@@ -120,3 +120,33 @@ def closest_four():
     lon = request.json["longitude"]
     list_4 = nearby_resorts(float(lat), float(lon), 100)
     return json.dumps(list_4)
+
+@app.route("/count", methods=["GET","POST"], strict_slashes=False)
+def get_count():
+    import torch
+    import numpy as np
+    import json
+
+    model = torch.hub.load('ultralytics/yolov5', 'yolov5s')
+
+    imgs = ['ski1.jpg', 'ski2.jpg', 'ski3.jpg', 'ski4.jpg']
+
+    count_list = []
+
+    for image in imgs:
+        results = model(image)
+        results.xyxy[0]
+        df_results = results.pandas().xyxy[0]
+        np.sum(df_results['name'] == 'person')
+
+        count = np.sum(df_results['name'] == 'person')
+        count_list.append(str(count))
+        # print(df_results)
+        # print(count)
+        # results.show()
+        count = 0
+
+    return json.dumps(count_list)
+
+if __name__  == "__main__": 
+    app.run(debug=True)
