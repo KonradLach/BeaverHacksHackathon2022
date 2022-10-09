@@ -72,16 +72,6 @@ def kelvin_to_fahrenheit(kelvin):
     return int(fahrenheit)
 
 
-# @app.route("/", methods=["POST", "GET"])
-# def get_weather_data():
-#         lat = request.args.get("lat")
-#         lon = request.args.get("lon")
-#         #print(request.args.get("lat"))
-#         url = f"https://api.openweathermap.org/data/2.5/weather?lat={float(lat)}&lon={float(lon)}&appid={API_KEY}"
-#         data = requests.get(url).json()
-#         print(data)
-#         return data
-
 @app.route("/data", methods=["GET","POST"], strict_slashes=False)
 def add_articles():
 
@@ -97,6 +87,7 @@ def add_articles():
 
     compiled_fahr = []
     compiled_desc = []
+    compiled_snow = []
     for resort in resort_list:
         lat = resort[0]
         lon = resort[1]
@@ -104,13 +95,20 @@ def add_articles():
         data = requests.get(url).json()
         temp_kelvin = data['main']['temp']
         compiled_fahr.append(kelvin_to_fahrenheit(temp_kelvin))
+
         description = data['weather'][0]['description']
         compiled_desc.append(description)
+        if "snow" in data:
+            snow = data['snow']['1h']
+        else:
+            snow = 0
+        compiled_snow.append(snow)
 
     big_array = []
     for index in range(4):
         big_array.append(compiled_desc[index])
         big_array.append(compiled_fahr[index])
+        big_array.append(compiled_snow[index])
     print(big_array)
 
     return json.dumps(big_array)
